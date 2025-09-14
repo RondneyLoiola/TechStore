@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import Celular from '../../assets/home/celular.png'
 import Notebook from '../../assets/home/laptop.png'
 import Relogio from '../../assets/home/relogio.png'
+import Barra from '../../Components/Barra'
+import BtnBarra from '../../Components/BarraBtn'
 import Header from '../../Components/Header'
 import { Box, Container, Content, Product } from "./styles"
 
@@ -27,13 +30,24 @@ function Home(){
             nome: 'Computadores',
             desc: 'Computadores e notebooks para trabalho e games'
         }
-
     ]
+
+    const [show, setShow] = useState(false)
+
+    const toggleBtn = () => {
+        setShow(!show)
+    }
+
+    const removeBar = () => {
+        setShow(false)
+    }
 
     return(
         <>
         <Header/>
-        <Container>
+        {show && <Barra/>}
+        <BtnBarra onClick={toggleBtn} $show={show}/>
+        <Container $show={show} onClick={removeBar}>
                 <Content>
                     <h1>Bem vindos à <span>TechStore</span></h1>
                     <Box>

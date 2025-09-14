@@ -1,7 +1,14 @@
+import { useState } from 'react'
+import asus from '../../assets/Celulares/asus.png'
+import google from '../../assets/Celulares/google.png'
 import Iphone from '../../assets/Celulares/iphone-max.png'
+import motorola from '../../assets/Celulares/motorola.png'
 import s4 from '../../assets/Celulares/s24.png'
 import xiaomi from '../../assets/Celulares/xiaomi.png'
+import Barra from '../../Components/Barra'
+import BtnBarra from '../../Components/BarraBtn'
 import Header from '../../Components/Header'
+
 import { Box, Container, Content, Product } from "./styles";
 
 function Celular(){
@@ -25,13 +32,46 @@ function Celular(){
             nome: 'Xiaomi Mi 13',
             desc: '128GB, carregamento rápido 67W',
             preco: 'R$ 1.899,00'
+        },
+
+        {
+            img: motorola,
+            nome: 'Motorola Edge 40',
+            desc: '256GB, tela pOLED 144Hz, IP68',
+            preco: 'R$ 2.499,00'
+        },
+
+        {
+            img: google,
+            nome: 'Google Pixel 8',
+            desc: '128GB, câmera com IA, Android puro',
+            preco: 'R$ 3.799,00'
+        },
+
+        {
+            img: asus,
+            nome: 'Asus ROG Phone 7',
+            desc: '512GB, 16GB RAM, para gamers',
+            preco: 'R$ 5.999,00'
         }
     ]
+
+    const [show, setShow] = useState(false)
+    
+    const toggleBtn = () => {
+        setShow(!show)
+    }
+
+    const removeBar = () => {
+        setShow(false)
+    }
 
     return(
         <>
             <Header/>
-            <Container>
+            {show && <Barra/>}
+            <BtnBarra onClick={toggleBtn} $show={show}/>
+            <Container $show={show} onClick={removeBar}>
                 <Content>
                     <h1>Celulares</h1>
                     <p className='p-content'>Os melhores celulares com tecnologia de ponta e preços competitivos</p>

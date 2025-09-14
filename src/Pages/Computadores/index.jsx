@@ -1,6 +1,13 @@
+import { useState } from 'react'
+import Pc6 from '../../assets/Computador/4090.png'
+import Pc4 from '../../assets/Computador/asus1.png'
+import Pc5 from '../../assets/Computador/lenovo.png'
 import Pc1 from '../../assets/Computador/macbook.png'
 import Pc3 from '../../assets/Computador/notbok.png'
 import Pc2 from '../../assets/Computador/pc.png'
+import Barra from '../../Components/Barra'
+import BtnBarra from '../../Components/BarraBtn'
+
 import Header from '../../Components/Header'
 import { Box, Container, Content, Product } from "./styles";
 
@@ -25,13 +32,46 @@ function Computador(){
             nome: 'Notebook Dell Inspiron',
             desc: 'Intel i7, 8GB RAM, SSD 256GB, tela 15.6"',
             preco: 'R$ 2.799,00'
+        },
+
+        {
+            img: Pc4,
+            nome: 'ASUS ROG Strix G15',
+            desc: 'AMD Ryzen 7, 16GB RAM, RTX 3050, SSD 512GB',
+            preco: 'R$ 5.299,00'
+        },
+
+        {
+            img:Pc5,
+            nome: 'Lenovo ThinkPad X1',
+            desc: 'Intel i5, 16GB RAM, SSD 512GB, tela 14" IPS',
+            preco: 'R$ 3.899,00'
+        },
+
+        {
+            img: Pc6,
+            nome: 'PC GAMER RTX 4090',
+            desc: 'Intel i9, 32GB RAM, SSD 2TB, RTX 4090',
+            preco: 'R$ 19.499,00'
         }
     ]
+
+    const [show, setShow] = useState(false)
+        
+    const toggleBtn = () => {
+        setShow(!show)
+    }
+
+    const removeBar = () => {
+        setShow(false)
+    }
 
     return(
         <>
             <Header/>
-            <Container>
+            {show && <Barra/>}
+            <BtnBarra onClick={toggleBtn} $show={show}/>
+            <Container $show={show} onClick={removeBar}>
                 <Content>
                     <h1>Computadores</h1>
                     <p className='p-content'>PCs e notebooks para todas as necessidades, do trabalho aos games mais exigentes</p>

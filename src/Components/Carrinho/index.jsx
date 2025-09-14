@@ -5,7 +5,7 @@ function Cart(){
     return (
         <Container>
             <div className="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
             </div>
         </Container>
     )

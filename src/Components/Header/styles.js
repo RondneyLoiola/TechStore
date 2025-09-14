@@ -12,6 +12,10 @@ export const Container = styled.div`
     top: 0;
     left: 0;
     right: 0;
+
+    @media (max-width: 1000px){
+        display: none;
+    }
 `;
 
 export const Content = styled.div`

@@ -8,6 +8,15 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: ${props => props.$show ? 'brightness(20%)' : 'none'};
+
+    @media (max-width: 947px){
+        padding: 0px;
+    }
+
+    @media (max-width: 768px){
+        padding: 0px;
+    }
 `;
 
 export const Content = styled.div`
@@ -20,7 +29,8 @@ export const Content = styled.div`
     padding: 25px;
     justify-content: center;
     position: relative;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.5);
+
 
     h1 {
         color: #fff;
@@ -66,15 +76,77 @@ export const Content = styled.div`
         font-weight: bold;
         text-align: center;
     }
+
+    @media (width: 1559px){
+        .p-content{
+            font-size: 1.3rem;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 947px){
+        width: 95%;
+    }
+
+    @media (max-width: 768px){
+        .p-content{
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
 `;
 export const Box = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
-    margin-top: 30px;
+    margin-top: 100px;
+    height: auto;
+    overflow: auto;
+    padding-right: 12px;
 
     p {
        width: 100%;
+    }
+
+    &::-webkit-scrollbar {
+        width: 12px; 
+        height: 12px; 
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--blue);
+        border-radius: 10px;
+    }
+
+    @media (max-width: 1528px){
+        margin-top: 140px;
+    }
+
+    @media (max-width: 947px){
+        margin-top: 160px;
+    }
+
+    @media (max-width: 768px){
+        grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+    }
+
+    @media (width: 526px){
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media (width: 481px) {
+        margin-left: auto;
+        margin-right: auto;
     }
 `;
 
@@ -103,11 +175,10 @@ export const Product = styled.div`
         cursor: pointer;
         font-weight: bold;
         text-align: center;
+
+        &:hover {
+            transform: scale(1.02);
+        }
     }
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        border: 2px solid rgba(102, 126, 234, 0.3);
-    }
 `;
